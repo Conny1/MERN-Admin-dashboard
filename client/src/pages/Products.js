@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ProductList from "../components/ProductList";
 import Nav from  "../components/Nav";
 import Title from "../components/Title";
+import axios from "axios";
 
 const Container = styled.div`
 
@@ -19,6 +20,26 @@ justify-content:center;
 `
 
 const Products = () => {
+const [product, setproduct] = useState([])
+   
+useEffect(() => {
+  const fetchProducts= async()=>{
+    try {
+      const results =await axios.get( `${process.env.REACT_APP_BASE_URL}/products`)
+      if(results){
+        setproduct(results.data)
+        // console.log(results.data)
+      }
+    
+    } catch (error) {
+      
+    }
+  }
+  fetchProducts()
+
+}, [])
+
+
   return (
       
     <Container>
@@ -26,84 +47,14 @@ const Products = () => {
     <Title text="See your list of products"  title="Products" />
 
     <Wrapper>
+      {
+        product.length === 0?"Loading...":
+        product.map((item)=>{
+          return <ProductList key={item._id} item={item} />
+        })
+      }
     
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
-      <ProductList />
+      
       </Wrapper>
     </Container>
     

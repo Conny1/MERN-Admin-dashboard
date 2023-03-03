@@ -1,17 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Nav from '../components/Nav'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import  {DataGrid}  from '@mui/x-data-grid';
 import Title from '../components/Title';
+import axios from 'axios';
 
 const Container = styled.div`
-
+color:#ffff;
 width:75%;
 `
 const Wrapper = styled.div`
@@ -19,57 +15,99 @@ const Wrapper = styled.div`
 `
 
 const Customer = () => {
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  const [customer, setcustomer] = useState([])
+   
+useEffect(() => {
+  const fetchclients= async()=>{
+    try {
+      const results =await axios.get( `${process.env.REACT_APP_BASE_URL}/user/clients`)
+      if(results){
+        setcustomer(results.data)
+      }
+    
+    } catch (error) {
+      
+    }
   }
+  fetchclients()
+
+}, [])
+
+  const columns = [
+    { field: '_id', headerName: 'ID', width: 220 },
+    {
+      field: 'name',
+      headerName: 'Name',
+      width: 100,
+      editable: false,
+    },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 220,
+      editable: false,
+    },
+    {
+      field: 'phoneNumber',
+      headerName: 'Phone number',
+      width: 110,
+      editable: false,
+    },
+    {
+      field: 'city',
+      headerName: 'city',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 150,
+    },
+    
+    {
+      field: 'country',
+      headerName: 'Country',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 60,
+    },
+
+    {
+      field: 'occupation',
+      headerName: 'Occupation',
+        width: 110,
+      editable: false,
+    },
+    {
+      field: 'role',
+      headerName: 'Role',
+        width: 110,
+      editable: false,
+    },
+    
+  ]; 
+
   
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
   
   return (
+   
    <Container>
     <Nav/>
     <Title text="List of customers"  title="customers" />
 
-    <Wrapper>
-
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    { customer.length === 0?"Fetching list...": <Wrapper>
+    <Box sx={{ height: 600, width: '100%' }}>
+      <DataGrid
+      sx={{color:'white' }}
+        rows={customer}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        disableSelectionOnClick
+        getRowId={(row) =>  row._id }        
+      />
+    </Box>
+   
 
 
-    </Wrapper>
+    </Wrapper>}
    </Container>
   )
 }

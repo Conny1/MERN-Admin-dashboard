@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+
 
 const Container = styled.div`
 min-height:200px;
@@ -33,22 +36,32 @@ margin-bottom:0;
 
 `
 
-const ProductList = () => {
+const ProductList = ({item}) => {
+  const [more, setMore] = useState(false)
+  
   return (
     <Container>
        <Wrapper>
-       <Text>clothing</Text>
-        <Name> Port Becky </Name>
-        <Text> $ 3373 </Text>
+       <Text>{item?.category}</Text>
+        <Name> {item?.name} </Name>
+        <Text> $ {item?.price} </Text>
        </Wrapper>
        <Wrapper>
-       rating  icons
-        <Text style={{color:'#ffff'}} >Destruction of thoraxic duct, repsjonsy  </Text>
+       <Stack spacing={1}>
+        <Rating name="half-rating-read" value={item?.rating} precision={0.5} readOnly />
+    </Stack>
+        <Text style={{color:'#ffff'}} > {item?.description} </Text>
       
        </Wrapper>
-        SEE MORE
+      { !more && <Text  style={{cursor:'pointer'}} onClick={()=>setMore(!more)} >SEE MORE</Text>} 
+      { more &&  <Wrapper>
+          <Text>ID: {item?._id}</Text>
+          <Text>Supply left: {item?.supply}</Text>
+          <Text  style={{cursor:'pointer'}} onClick={()=>setMore(!more)} >SEE LESS</Text> 
+          
+        </Wrapper> }
     </Container>
   )
-}
+}  
 
 export default ProductList
