@@ -5,7 +5,7 @@ import {createError} from  "../error.js"
  export const getAllclients =async( req,resp, next )=>{
 
     try {
-        const resuts =  await User.find({role:"user"})
+        const resuts =  await User.find({role:"user"}).select("-password");
     if(!resuts) next(createError(404, "Not Found"))
     resp.status(200).json(resuts)
         
@@ -19,7 +19,7 @@ import {createError} from  "../error.js"
 export const getAlladmins =async( req,resp, next )=>{
 
     try {
-        const resuts =  await User.find({role:"admin"})
+        const resuts =  await User.find({role:"admin"}).select("-password");
     if(!resuts) next(createError(404, "Not Found"))
     resp.status(200).json(resuts)
         

@@ -6,6 +6,8 @@ const H3 = styled.h3`
 text-transform:uppercase;
 font-weight:500;
 margin-bottom:-1%;
+color:#ffff;
+
 `
 const Text = styled.p`
 color:#ddc18c;

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import {MdAnalytics,MdRemoveRedEye,MdCalendarToday,MdCalendarViewMonth, MdHome,MdNorthEast, MdShoppingCart, MdOutlineAdminPanelSettings , MdPeopleAlt, MdPayment, MdPanoramaPhotosphere} from "react-icons/md";
+import {MdAnalytics,MdRemoveRedEye,MdCalendarToday,MdCalendarViewMonth, MdHome, MdShoppingCart, MdOutlineAdminPanelSettings , MdPeopleAlt, MdPayment} from "react-icons/md";
 
 
 const Container = styled.div`
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 display:flex;
 flex-direction:column;
 gap:20px;
-font-size:12px;
+font-size:13px;
 
 align-items:center;
 `
@@ -56,7 +56,7 @@ const Sidebar = () => {
             <Link to='/products' style={{color:'#ffff', textDecoration:'none', display:'flex',gap:'10px',width:'60%'  }}  ><MdShoppingCart/>    Products </Link>
             <Link to='/customers'style={{color:'#ffff', textDecoration:'none',display:'flex',gap:'10px', width:'60%'  }} >  <MdPeopleAlt/> Customers </Link>
             <Link to='/transactions' style={{color:'#ffff', textDecoration:'none',display:'flex',gap:'10px',width:'60%'  }} > <MdPayment/> Transactions </Link>
-            <Link to='/geography' style={{color:'#ffff', textDecoration:'none',display:'flex',gap:'10px',width:'60%'  }} ><MdPanoramaPhotosphere/> Geograpgy </Link>
+            {/* <Link to='/geography' style={{color:'#ffff', textDecoration:'none',display:'flex',gap:'10px',width:'60%'  }} ><MdPanoramaPhotosphere/> Geograpgy </Link> */}
         </Wrapper>
 
         <Wrapper>
@@ -71,7 +71,7 @@ const Sidebar = () => {
         <Wrapper>
             <H4> Management </H4>
             <Link to='/admin'style={{color:'#ffff', textDecoration:'none', display:'flex',gap:'10px', width:'60%' }} > <MdOutlineAdminPanelSettings/> Admin </Link>
-            <Link to='/performance'style={{color:'#ffff', textDecoration:'none',display:'flex',gap:'10px',width:'60%'  }} > <MdNorthEast/> Performance </Link>
+            {/* <Link to='/performance'style={{color:'#ffff', textDecoration:'none',display:'flex',gap:'10px',width:'60%'  }} > <MdNorthEast/> Performance </Link> */}
              </Wrapper>
         
 
