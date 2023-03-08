@@ -1,4 +1,4 @@
-import {  HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Admin, BreakeDown, Customer, Daily, Home, Monthly, OverView, Products, Transactions } from "./pages";
 import styled from "styled-components";
 import Sidebar from "./components/Sidebar"
@@ -17,7 +17,7 @@ function App() {
   return (
    <div className='app' >
     <Container>
-    <HashRouter>
+    <BrowserRouter>
    { sidebar &&  <Sidebar/>}
     <SlList onClick={()=>{setsidebar(!sidebar)}} style={{fontSize:'20px',color:'#fff', position:'absolute', top:0, left:0,zIndex:9999 }} />
    
@@ -35,7 +35,7 @@ function App() {
       <Route path="transactions"  element={<Transactions/>}/>
     </Routes>
     
-    </HashRouter>
+    </BrowserRouter>
     </Container>
     </div>
   );
