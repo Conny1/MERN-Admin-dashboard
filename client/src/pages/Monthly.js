@@ -8,7 +8,8 @@ import {ResponsiveLine} from '@nivo/line'
 
 
 const Container = styled.div`
-width:75%;
+flex:1;
+
 `
 
 

@@ -7,7 +7,8 @@ import Title from '../components/Title'
     height:400px;
     color:black;
     
-    width:75%;
+    flex:1;
+
   `
   const Select = styled.select`
   border:1px solid grey;

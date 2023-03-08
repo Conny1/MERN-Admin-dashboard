@@ -18,6 +18,8 @@ margin-bottom:50px;
 height:100vh;
 position:sticky;
 top:0;
+min-width:200px;
+z-index:9999;
 
 `
 const Wrapper = styled.div`

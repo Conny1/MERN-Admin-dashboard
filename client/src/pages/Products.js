@@ -6,8 +6,8 @@ import Title from "../components/Title";
 import axios from "axios";
 
 const Container = styled.div`
+flex:1;
 
-width:75%;
 `
 const Wrapper = styled.div`
 display:flex;

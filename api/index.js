@@ -32,10 +32,10 @@ app.use( bodyParser.urlencoded({extended:false}) )
 app.use(cors())
 
 const connect= async ()=>{
-  //  await mongoose.connect(process.env.MONGO_URL)
-  await mongoose.connect(`mongodb://127.0.0.1:27017/admindash`)
+   await mongoose.connect(process.env.MONGO_URL)
+  // await mongoose.connect(`mongodb://127.0.0.1:27017/admindash`)
     console.log("connected to mongoDB")
-     // await Product.insertMany( dataProduct )
+    //  await Product.insertMany( dataProduct )
     // await User.insertMany( dataUser )
     // await Transaction.insertMany( dataTransaction )
     // await AffiliateStat.insertMany(dataAffiliateStat)

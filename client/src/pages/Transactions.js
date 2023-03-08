@@ -8,8 +8,8 @@ import axios from 'axios';
 // import { format } from 'date-fns'
 
 const Container = styled.div`
+flex:1;
 
-width:75%;
 `
 const Wrapper = styled.div`
 
@@ -75,7 +75,18 @@ useEffect(() => {
     <Title text="List of customers"  title="customers" />
 
     { trasaction.length === 0?"Fetching list...": <Wrapper>
-    <Box sx={{ height: 600, width: '100%' }}>
+    <Box sx={{ height: 600, width: '100%',
+   "& .MuiDataGrid-columnHeaders": {
+    backgroundColor: "white",
+    color: "black" ,
+    borderBottom: "none",
+  },
+   "& .MuiDataGrid-footerContainer": {
+    backgroundColor: "white",
+    color: "black",
+    borderTop: "none",
+  },
+  }}>
       <DataGrid
       sx={{color:'white' }}
         rows={trasaction}

@@ -5,7 +5,9 @@ import Nav from '../components/Nav'
 import Title from '../components/Title'
 
 const Container = styled.div`
-width:75%;
+/* width:75%; */
+flex:1;
+
 `
 const Wrapper = styled.div`
 height:500px; 

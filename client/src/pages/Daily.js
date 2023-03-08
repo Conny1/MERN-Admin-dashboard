@@ -8,12 +8,14 @@ import axios from 'axios';
 import {ResponsiveLine} from '@nivo/line'
 
 const Container = styled.div`
-width:75%;
+/* width:75%; */
+flex:1;
+
 `
 const Wrapper = styled.div`
 display:flex;
 justify-content:space-between;
-outline:1px solid red;
+/* outline:1px solid red; */
 width:100%;
 `
 

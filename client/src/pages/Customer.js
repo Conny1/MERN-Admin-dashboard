@@ -8,7 +8,9 @@ import axios from 'axios';
 
 const Container = styled.div`
 color:#ffff;
-width:75%;
+/* width:75%; */
+flex:1;
+
 `
 const Wrapper = styled.div`
 
@@ -93,7 +95,18 @@ useEffect(() => {
     <Title text="List of customers"  title="customers" />
 
     { customer.length === 0?"Fetching list...": <Wrapper>
-    <Box sx={{ height: 600, width: '100%' }}>
+    <Box sx={{ height: 600, width: '100%',
+   "& .MuiDataGrid-columnHeaders": {
+    backgroundColor: "white",
+    color: "black" ,
+    borderBottom: "none",
+  },
+   "& .MuiDataGrid-footerContainer": {
+    backgroundColor: "white",
+    color: "black",
+    borderTop: "none",
+  },
+  }}>
       <DataGrid
       sx={{color:'white' }}
         rows={customer}
