@@ -65,7 +65,7 @@ const totalUnitsLine ={
         {x:splitDate, y:totalUnits}
     ]
     
-    }
+    } 
    })
 
    const formatedData = [totalSalesLine, totalUnitsLine];
